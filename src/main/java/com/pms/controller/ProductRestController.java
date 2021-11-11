@@ -64,7 +64,7 @@ public List<ProductDTO> findProductByManufacturer(@PathVariable String manufactu
 @ApiOperation("add product details to the database")
 public String addProduct(@RequestBody ProductDTO productDTO)//here deserialized
 {
-	
+	//System.out.println("called here....");
 	return service.addProduct(productDTO);
 	
 }
@@ -90,6 +90,7 @@ ProductDTO updatedProductDTO=service.updateProduct(productDTO);//pDTO
 public String deleteProductById(@PathVariable Long id)
 {
 	return service.deleteProductById(id);
+	
 	
 }
 

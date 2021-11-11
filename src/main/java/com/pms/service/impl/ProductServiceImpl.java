@@ -36,7 +36,7 @@ public class ProductServiceImpl implements IProductService {
 			//Each ProductDTO obj is added to productDTOList
 			
 		});
-		
+		//System.out.println("Called here");//by test method
 		return productDTOList;
 	}
 

@@ -51,6 +51,12 @@ public class Product {
 	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", price=" + price
+				+ ", manufacturer=" + manufacturer + "]";
+	}
 	
 	
 
