@@ -44,6 +44,7 @@ public class ProductServiceImpl implements IProductService {
 	@Cacheable(value = "ProductById",key = "#pid",unless = "#result==null")//if result is null then don't store data in cache
 	public ProductDTO searchByProductId(Long pid) {
 		Optional<Product> opt=productRepository.findById(pid);
+		//System.out.println(opt);
 		if(opt.isPresent())
 		{
 			Product product=opt.get();
@@ -74,7 +75,7 @@ public class ProductServiceImpl implements IProductService {
 		Product product=new Product();
 		BeanUtils.copyProperties(productDTO, product);
 		//copy DTO obj to Entity obj which has persistent obj. DTO obj doesn't contain persistent obj
-		if(productRepository.existsById(product.getProductId()))
+		if(productRepository.existsById(product.getProductId()))//isExist check
 		{
 			return "product is already exist";
 		}

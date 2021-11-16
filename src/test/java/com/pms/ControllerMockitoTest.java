@@ -74,7 +74,7 @@ public void test_findAllProducts()
 }
 @Test
 @Order(2)
-public void test_findProductById()
+public void test_findProductById01()
 {
 	//creating mock data 
 	//for pDTO
@@ -89,6 +89,21 @@ public void test_findProductById()
 }
 @Test
 @Order(3)
+public void test_findProductById02()
+{
+	//creating mock data 
+	//for pDTO
+	ProductDTO pDTO=new ProductDTO();
+	pDTO.setProductId(301L);
+	pDTO.setProductName("earphone");
+	pDTO.setPrice(800D);
+	pDTO.setManufacturer("boat"); 
+	Long id=301L;//expected id/ or o/p or result
+	when(service.searchByProductId(id)).thenReturn(null);
+	assertEquals(null,productRestController.findProductById(id));
+}
+@Test
+@Order(4)
 public void test_findProductByManufacturer()
 {
 	   //creating mock data
@@ -118,7 +133,7 @@ public void test_findProductByManufacturer()
 		    });
 }
 @Test
-@Order(4)
+@Order(5)
 public void test_addProduct() {
 	//for pDTO
 	ProductDTO pDTO=new ProductDTO();
@@ -131,8 +146,8 @@ public void test_addProduct() {
 	assertEquals(expectedMSG,productRestController.addProduct(pDTO));
 }
 @Test
-@Order(5)
-public void test_updateProduct()
+@Order(6)
+public void test_updateProduct01()
 {   
 	//creating mock data
 	//for pDTO
@@ -147,7 +162,23 @@ public void test_updateProduct()
 	assertEquals(pDTO, productRestController.updateProduct(pDTO));
 }
 @Test
-@Order(6)
+@Order(7)
+public void test_updateProduct02()
+{   
+	//creating mock data
+	//for pDTO
+	ProductDTO pDTO=new ProductDTO();
+	pDTO.setProductId(301L);
+	pDTO.setProductName("earbuds");
+	pDTO.setPrice(800D);
+	pDTO.setManufacturer("boat");
+	//mocking external dependency
+	when(service.updateProduct(pDTO)).thenReturn(null);
+	//assertion
+	assertEquals(null, productRestController.updateProduct(pDTO));
+}
+@Test
+@Order(8)
 public void test_deleteProductById()
 {
 Long id=5L;
